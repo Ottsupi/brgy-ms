@@ -2,6 +2,7 @@
     "[python]": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.parameterHints.enabled": false,
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit"
         },
