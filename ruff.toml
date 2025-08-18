@@ -69,6 +69,7 @@ ignore = [
     'D415',         # ignore first line must end in punctuation
     'E402',         # ignore module imports not at top of file
     'TD003',        # ignore missing todo issue link
+    'PLR0913'       # ignore too many arguments
 ]
 unfixable = [
     'F401',         # unused imports
