@@ -1,0 +1,43 @@
+name: ${PROJECT_NAME}-${ENVIRONMENT}
+services:
+  server:
+    build:
+      context: .
+      dockerfile: ./docker/local/app.Dockerfile
+    env_file:
+      - .env
+    entrypoint: ["./entrypoint.sh"]
+    depends_on:
+      database:
+        condition: service_healthy
+        restart: true
+
+  database:
+    image: postgres:17
+    env_file:
+      - .env
+    volumes:
+      - database-data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        ["CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}"]
+      start_period: 30s
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  reverse-proxy:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./docker/local/nginx.Dockerfile
+    env_file:
+      - .env
+    ports:
+      - ${HTTP_PORT}:${HTTP_PORT}
+      - ${HTTPS_PORT}:${HTTPS_PORT}
+    depends_on:
+      - server
+
+volumes:
+  database-data: {}

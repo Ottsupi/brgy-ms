@@ -1,0 +1,8 @@
+django==5.2.*
+django-environ==0.12.*
+gunicorn==23.0.*
+argon2-cffi==25.1.*
+whitenoise==6.9.*
+
+# This should already be installed from the app.Dockerfile 
+# psycopg[c]==3.2.*
