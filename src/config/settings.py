@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # Third-party apps
     "phonenumber_field",
     # Local apps
+    "core",
     "apps.app",
 ]
 
@@ -124,6 +125,11 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+# Custom User model
+# https://docs.djangoproject.com/en/5.2/topics/auth/customizing/
+
+AUTH_USER_MODEL = "core.User"
 
 
 # Password management
