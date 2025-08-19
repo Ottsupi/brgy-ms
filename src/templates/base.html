@@ -16,9 +16,13 @@
     <link rel="stylesheet" href="{% static "global.css" %}">
   </head>
   <body>
-    {% block content %}
-      <h1>You are in base template.</h1>
-      <h2>Content is missing</h2>
-    {% endblock content %}
+    {% block layout %}
+      <div class="h-screen flex flex-col items-center justify-center">
+        <code class="text-6xl mb-3">templates/base.html</code>
+        <h1 class="text-5xl">
+          Block "layout" <span class="text-red-500">not found</span>
+        </h1>
+      </div>
+    {% endblock layout %}
   </body>
 </html>
