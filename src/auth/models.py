@@ -57,7 +57,7 @@ class UserManager(BaseUserManager):
         first_name: str,
         middle_name: str,
         last_name: str,
-    ):
+    ) -> User:
         return self.create_user(
             phone_number=phone_number,
             password=password,
