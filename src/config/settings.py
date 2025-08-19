@@ -52,8 +52,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "crispy_forms",
     # Local apps
-    "auth",
-    "core",
+    "authentication",
     "apps.app",
 ]
 
@@ -131,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Custom User model
 # https://docs.djangoproject.com/en/5.2/topics/auth/customizing/
 
-AUTH_USER_MODEL = "auth.User"
+AUTH_USER_MODEL = "authentication.User"
 
 
 # Password management
