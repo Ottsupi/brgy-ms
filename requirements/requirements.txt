@@ -5,6 +5,7 @@ argon2-cffi==25.1.*
 whitenoise==6.9.*
 
 django-phonenumber-field[phonenumbers]==8.1.*
+django-crispy-forms==1.11.*
 
 # This should already be installed from the app.Dockerfile
 # psycopg[c]==3.2.*
