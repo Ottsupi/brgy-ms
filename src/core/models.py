@@ -6,6 +6,7 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class UserManager(BaseUserManager):
@@ -71,7 +72,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    phone_number = models.PhoneNumberField(_("phone number"), unique=True)
+    phone_number = PhoneNumberField(_("phone number"), unique=True)
     email = models.EmailField(_("email address"), unique=True, blank=True)
 
     first_name = models.CharField(_("first name"), max_length=50)
