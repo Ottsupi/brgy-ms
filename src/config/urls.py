@@ -19,12 +19,13 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 
-from authentication.views import login_view, registration_view
+from authentication.views import login_view, logout_view, registration_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("apps.app.urls")),
     path("login/", login_view, name="login"),
+    path("logout/", logout_view, name="logout"),
     path("register/", registration_view, name="register"),
 ]
 
