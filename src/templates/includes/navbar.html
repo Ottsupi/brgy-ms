@@ -14,10 +14,10 @@
       </ul>
       <ul class="flex flex-row gap-1">
         <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors hover:bg-primary-200">
-          <span class="text-text-900">Register</span>
+          <a class="text-text-900" href="{% url "register" %}">Register</a>
         </li>
         <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors bg-secondary-400 hover:bg-primary-200">
-          <span class="text-text-900">Login</span>
+          <a class="text-text-900" href="{% url "login" %}">Login</a>
         </li>
       </ul>
     </nav>
