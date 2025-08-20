@@ -23,10 +23,10 @@ from authentication.views import login_view, logout_view, registration_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("apps.app.urls")),
     path("login/", login_view, name="login"),
     path("logout/", logout_view, name="logout"),
     path("register/", registration_view, name="register"),
+    path("", include("apps.app.urls")),
 ]
 
 if settings.DEBUG:
