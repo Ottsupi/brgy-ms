@@ -21,6 +21,7 @@
         "monosans.djlint",
         "bradlc.vscode-tailwindcss",
         // visuals
+        "stivo.tailwind-fold",
         "aaron-bond.better-comments",
         "Gruntfuggly.todo-tree"
     ],
