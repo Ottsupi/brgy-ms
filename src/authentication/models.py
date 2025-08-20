@@ -99,4 +99,4 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.first_name
 
     def __str__(self):
-        return f"{self.phone_number} - {self.last_name}"
+        return f"{self.phone_number} - {self.get_full_name()}"
