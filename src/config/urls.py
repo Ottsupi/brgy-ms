@@ -19,9 +19,13 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 
+from authentication.views import login_view, registration_view
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("apps.app.urls")),
+    path("login/", login_view, name="login"),
+    path("register/", registration_view, name="register"),
 ]
 
 if settings.DEBUG:

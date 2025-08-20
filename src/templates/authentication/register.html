@@ -1,0 +1,20 @@
+{% extends "layouts/blank.html" %}
+{% load crispy_forms_tags %}
+{% block page_title %}
+  Register | {{ block.super }}
+{% endblock page_title %}
+{% block content %}
+  <div class="w-screen h-screen flex items-center justify-center">
+    <div class="bg-background-100 shadow-lg p-8 rounded-2xl">
+      <h1 class="mt-3 mb-5 text-2xl text-center">Register</h1>
+      <form method="post" class="flex flex-col gap-y-3">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit"
+                class="px-5 py-2 rounded-full bg-primary-300 hover:bg-secondary-300 cursor-pointer">
+          Create Account
+        </button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}

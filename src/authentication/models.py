@@ -15,7 +15,7 @@ class UserManager(BaseUserManager):
         *args,
         phone_number: str,
         password: str,
-        email: str,
+        email: str | None = None,
         first_name: str,
         middle_name: str,
         last_name: str,
@@ -34,9 +34,12 @@ class UserManager(BaseUserManager):
         if not last_name:
             raise ValueError("Users must have a last name")
 
+        # Make sure email is None if not provided
+        email = None if email is None or "" else self.normalize_email(email)
+
         user: User = self.model(
             phone_number=phone_number,
-            email=self.normalize_email(email),
+            email=email,
             first_name=first_name,
             middle_name=middle_name,
             last_name=last_name,
@@ -53,7 +56,7 @@ class UserManager(BaseUserManager):
         *args,
         phone_number: str,
         password: str,
-        email: str,
+        email: str | None = None,
         first_name: str,
         middle_name: str,
         last_name: str,
@@ -73,7 +76,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     phone_number = PhoneNumberField(_("phone number"), unique=True)
-    email = models.EmailField(_("email address"), unique=True, blank=True)
+    email = models.EmailField(_("email address"), unique=True, null=True, blank=True, default=None)
 
     first_name = models.CharField(_("first name"), max_length=50)
     middle_name = models.CharField(_("middle name"), max_length=50)
