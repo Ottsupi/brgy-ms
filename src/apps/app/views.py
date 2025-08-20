@@ -6,6 +6,10 @@ from django.shortcuts import render
 logger = logging.getLogger(__name__)
 
 
+def health_check():
+    return HttpResponse(status=200)
+
+
 def index(request: HttpResponse):
     logger.debug("Accessed Hello world! view")
     message = "Hello world!"
@@ -19,5 +23,6 @@ def index(request: HttpResponse):
     return render(request, "app/home.html", context)
 
 
-def health_check(request):
-    return HttpResponse(status=200)
+def dashboard(request: HttpResponse):
+    context = {}
+    return render(request, "app/dashboard.html", context)
