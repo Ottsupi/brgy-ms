@@ -1,1 +1,93 @@
+/* Google fonts */
+/* IBM Plex: Serif, Mono, Sans, Sans Condensed */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 @import "tailwindcss";
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-xs: 20rem;
+  --breakpoint-sm: 22.5rem;
+  --breakpoint-md: 40rem;
+  --breakpoint-lg: 64rem;
+  /* --breakpoint-xl: 80rem; */
+
+  --container-*: initial;
+  --container-xs: 20rem;
+  --container-sm: 22.5rem;
+  --container-md: 40rem;
+  --container-lg: 64rem;
+  /* --container-xl: 80rem; */
+
+
+  /* Colors */
+  --color-text-50: hsl(230, 23%, 95%);
+  --color-text-100: hsl(235, 22%, 90%);
+  --color-text-200: hsl(235, 22%, 80%);
+  --color-text-300: hsl(236, 22%, 70%);
+  --color-text-400: hsl(236, 22%, 60%);
+  --color-text-500: hsl(235, 22%, 50%);
+  --color-text-600: hsl(236, 22%, 40%);
+  --color-text-700: hsl(236, 22%, 30%);
+  --color-text-800: hsl(235, 22%, 20%);
+  --color-text-900: hsl(235, 22%, 10%);
+  --color-text-950: hsl(240, 23%, 5%);
+
+  --color-background-50: hsl(216, 20%, 95%);
+  --color-background-100: hsl(213, 18%, 90%);
+  --color-background-200: hsl(213, 18%, 80%);
+  --color-background-300: hsl(213, 18%, 70%);
+  --color-background-400: hsl(213, 18%, 60%);
+  --color-background-500: hsl(213, 18%, 50%);
+  --color-background-600: hsl(213, 18%, 40%);
+  --color-background-700: hsl(213, 18%, 30%);
+  --color-background-800: hsl(213, 18%, 20%);
+  --color-background-900: hsl(213, 18%, 10%);
+  --color-background-950: hsl(204, 20%, 5%);
+
+  --color-primary-50: hsl(220, 69%, 95%);
+  --color-primary-100: hsl(219, 73%, 90%);
+  --color-primary-200: hsl(219, 73%, 80%);
+  --color-primary-300: hsl(219, 73%, 70%);
+  --color-primary-400: hsl(219, 72%, 60%);
+  --color-primary-500: hsl(219, 72%, 50%);
+  --color-primary-600: hsl(219, 72%, 40%);
+  --color-primary-700: hsl(219, 73%, 30%);
+  --color-primary-800: hsl(219, 73%, 20%);
+  --color-primary-900: hsl(219, 73%, 10%);
+  --color-primary-950: hsl(220, 69%, 5%);
+
+  --color-secondary-50: hsl(133, 76%, 95%);
+  --color-secondary-100: hsl(132, 76%, 90%);
+  --color-secondary-200: hsl(132, 75%, 80%);
+  --color-secondary-300: hsl(132, 75%, 70%);
+  --color-secondary-400: hsl(132, 75%, 60%);
+  --color-secondary-500: hsl(132, 75%, 50%);
+  --color-secondary-600: hsl(132, 75%, 40%);
+  --color-secondary-700: hsl(132, 75%, 30%);
+  --color-secondary-800: hsl(132, 75%, 20%);
+  --color-secondary-900: hsl(132, 76%, 10%);
+  --color-secondary-950: hsl(133, 76%, 5%);
+
+  --color-accent-50: hsl(26, 92%, 95%);
+  --color-accent-100: hsl(27, 88%, 90%);
+  --color-accent-200: hsl(27, 90%, 80%);
+  --color-accent-300: hsl(27, 90%, 70%);
+  --color-accent-400: hsl(27, 90%, 60%);
+  --color-accent-500: hsl(27, 90%, 50%);
+  --color-accent-600: hsl(27, 90%, 40%);
+  --color-accent-700: hsl(27, 90%, 30%);
+  --color-accent-800: hsl(27, 90%, 20%);
+  --color-accent-900: hsl(27, 88%, 10%);
+  --color-accent-950: hsl(29, 92%, 5%);
+
+
+  /* Fonts */
+  --font-serif: "IBM Plex Serif", "serif";
+  --font-sans: "IBM Plex Sans", "sans";
+  --font-mono: "IBM Plex Mono", "monospace";
+
+  --font-display: "IBM Plex Serif", "serif";
+  --font-header: "IBM Plex Sans Condensed", "sans";
+  --font-body: "IBM Plex Sans", "serif";
+}
