@@ -12,14 +12,25 @@
           <span class="text-text-900">Calendar</span>
         </li>
       </ul>
-      <ul class="flex flex-row gap-1">
-        <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors hover:bg-primary-200">
-          <a class="text-text-900" href="{% url "register" %}">Register</a>
-        </li>
-        <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors bg-secondary-400 hover:bg-primary-200">
-          <a class="text-text-900" href="{% url "login" %}">Login</a>
-        </li>
-      </ul>
+      {% if user.is_authenticated %}
+        <ul class="flex flex-row gap-1">
+          <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors hover:bg-primary-200">
+            <span class="text-text-900">Hi {{ user.get_short_name }}</span>
+          </li>
+          <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors bg-red-400 hover:bg-primary-200">
+            <a class="text-text-900" href="{% url "logout" %}">Logout</a>
+          </li>
+        </ul>
+      {% else %}
+        <ul class="flex flex-row gap-1">
+          <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors hover:bg-primary-200">
+            <a class="text-text-900" href="{% url "register" %}">Register</a>
+          </li>
+          <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors bg-secondary-400 hover:bg-primary-200">
+            <a class="text-text-900" href="{% url "login" %}">Login</a>
+          </li>
+        </ul>
+      {% endif %}
     </nav>
   </div>
 </div>
