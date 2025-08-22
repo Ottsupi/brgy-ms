@@ -17,18 +17,24 @@
           <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors hover:bg-primary-200">
             <span class="text-text-900">Hi {{ user.get_short_name }}</span>
           </li>
+          <a href="{% url "logout" %}">
           <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors bg-red-400 hover:bg-primary-200">
-            <a class="text-text-900" href="{% url "logout" %}">Logout</a>
+              <span class="text-text-900">Logout</span>
           </li>
+          </a>
         </ul>
       {% else %}
         <ul class="flex flex-row gap-1">
+          <a href="{% url "register" %}">
           <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors hover:bg-primary-200">
-            <a class="text-text-900" href="{% url "register" %}">Register</a>
+              <span class="text-text-900">Register</span>
           </li>
+          </a>
+          <a href="{% url "login" %}">
           <li class="px-3 py-2 my-2 rounded cursor-pointer transition-colors bg-secondary-400 hover:bg-primary-200">
-            <a class="text-text-900" href="{% url "login" %}">Login</a>
+              <span class="text-text-900"">Login</span>
           </li>
+          </a>
         </ul>
       {% endif %}
     </nav>
