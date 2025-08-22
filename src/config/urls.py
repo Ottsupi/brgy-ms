@@ -30,6 +30,7 @@ urlpatterns = [
     path("logout/", logout_view, name="logout"),
     path("register/", registration_view, name="register"),
     path("", include("apps.app.urls")),
+    path("document/", include("apps.document.urls")),
 ]
 
 if settings.DEBUG:

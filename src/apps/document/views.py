@@ -1,3 +1,16 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
 
-# Create your views here.
+from .models import DocumentFile
+
+
+def index(request: HttpResponse):
+    if not request.user.is_authenticated:
+        return redirect(request, "404")
+
+    documents: DocumentFile = DocumentFile.objects.all()
+
+    context = {
+        "documents": documents,
+    }
+    return render(request, "document/index.html", context)

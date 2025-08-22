@@ -1,0 +1,12 @@
+{% extends "layouts/blank.html" %}
+{% block page_title %}
+  Document - {{ block.super }}
+{% endblock page_title %}
+{% block content %}
+  <div class="h-screen flex flex-col">
+    {% include "includes/navbar.html" %}
+    <div class="h-full flex items-center justify-center">
+      <h1 class="text-8xl text-text-800 font-display">Documents...</h1>
+    </div>
+  </div>
+{% endblock content %}
