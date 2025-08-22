@@ -1,9 +1,8 @@
-{% extends "layouts/blank.html" %}
+{% extends "layouts/default.html" %}
 {% block page_title %}
   Dashboard | {{ block.super }}
 {% endblock page_title %}
 {% block content %}
-  {% include "includes/navbar.html" %}
   <div class="container mx-auto py-3">
     <div class="flex mt-6">
       <span class="text-4xl font-display font-semibold text-text-800">{{ user.get_full_name }}</span>
