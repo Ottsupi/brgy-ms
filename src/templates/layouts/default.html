@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block page_title %}
+  {{ block.super }}
+{% endblock page_title %}
+{% block layout %}
+  {% include "includes/navbar.html" %}
+  {% block content %}
+    <div class="h-screen flex flex-col items-center justify-center">
+      <code class="text-6xl mb-3">templates/layouts/default.html</code>
+      <h1 class="text-5xl">
+        Block "content" <span class="text-red-500">not found</span>
+      </h1>
+    </div>
+  {% endblock content %}
+{% endblock layout %}
