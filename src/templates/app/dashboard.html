@@ -14,9 +14,11 @@
         <div class="flex p-6 rounded-2xl shadow transition-all bg-primary-200 hover:bg-primary-300 hover:shadow-md cursor-pointer">
           <span class="font-header text-xl">Requests</span>
         </div>
-        <div class="flex p-6 rounded-2xl shadow transition-all bg-secondary-200 hover:bg-secondary-300 hover:shadow-md cursor-pointer">
-          <span class="font-header text-xl">My Documents</span>
-        </div>
+        <a href="{% url "document:index" %}">
+          <div class="flex p-6 rounded-2xl shadow transition-all bg-secondary-200 hover:bg-secondary-300 hover:shadow-md cursor-pointer">
+            <span class="font-header text-xl">My Documents</span>
+          </div>
+        </a>
       </div>
     </div>
   </div>
