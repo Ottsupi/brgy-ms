@@ -13,6 +13,6 @@ def index(request: HttpResponse):
 
     context = {
         "documents": documents,
-        "documents_count": documents.count,
+        "documents_count": documents.count(),
     }
     return render(request, "document/index.html", context)
