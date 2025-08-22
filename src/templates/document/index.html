@@ -28,7 +28,9 @@
     {% endif %}
     {% if documents_count >= 1 %}
       <div class="w-full flex flex-row justify-start">
-        <span class="text-xl font-header font-semibold text-text-700">{{ documents_count }} item{{ documents_count|pluralize }}</span>
+        <span class="text-xl font-header font-semibold text-text-700">
+          {{ documents_count }} item{{ documents_count|pluralize }}
+        </span>
       </div>
       <table class="w-3/4 mx-auto table">
         <thead class="border-b border-background-400">
@@ -39,7 +41,11 @@
         <tbody>
           {% for document in documents %}
             <tr class="transition-colors odd:bg-primary-200 hover:bg-background-300">
-              <td class="py-2 px-3 cursor-pointer">{{ document.file_name }}</td>
+              <td class="py-2 px-3 cursor-pointer">
+                <a href="{{ document.file.url }}"
+                   target="_blank"
+                   class="flex w-full h-full">{{ document.file_name }}</a>
+              </td>
               <td class="py-2">{{ document.document_type.name }}</td>
               <td class="py-2">{{ document.date_added|date:"Y-m-d" }}</td>
             </tr>
