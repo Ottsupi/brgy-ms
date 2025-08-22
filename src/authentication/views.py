@@ -52,7 +52,6 @@ def login_view(request: HttpRequest):
         error_message = "No account found with the given phone number and password"
         error = forms.ValidationError(error_message, code="invalid")
         form.add_error(None, error)
-        return render(request, "authentication/login.html", context)
 
     return render(request, "authentication/login.html", context)
 

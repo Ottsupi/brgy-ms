@@ -1,0 +1,30 @@
+{% extends "layouts/default.html" %}
+{% load crispy_forms_tags %}
+{% block page_title %}
+  New Document | {{ block.super }}
+{% endblock page_title %}
+{% block content %}
+  <div class="container mx-auto py-3 mt-8">
+    <div class="flex flex-row justify-between items-end">
+      <div class="flex flex-row items-baseline gap-x-3">
+        <span class="text-4xl font-display font-semibold text-text-800">New Document</span>
+      </div>
+      <a href="{% url "document:index" %}">
+        <div class="flex px-4 py-2 rounded-full transition bg-red-600 hover:bg-red-700 cursor-pointer">
+          <span class="text-xl font-header font-medium text-text-100">Cancel</span>
+        </div>
+      </a>
+    </div>
+    <hr class="my-6 mx-2 border-background-400">
+    <div class="w-1/2 mx-auto bg-background-100 shadow-lg p-8 rounded-2xl">
+      <form method="post"
+            enctype="multipart/form-data"
+            class="flex flex-col gap-y-3">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit"
+                class="px-5 py-2 rounded-full bg-primary-300 hover:bg-secondary-300 cursor-pointer">Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}
