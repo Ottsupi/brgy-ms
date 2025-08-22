@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     # Local apps
     "authentication",
     "apps.app",
+    "apps.document",
 ]
 
 if DEBUG:
