@@ -1,12 +1,24 @@
 {% extends "layouts/blank.html" %}
 {% block page_title %}
-  Document - {{ block.super }}
+  My Documents | {{ block.super }}
 {% endblock page_title %}
 {% block content %}
-  <div class="h-screen flex flex-col">
-    {% include "includes/navbar.html" %}
-    <div class="h-full flex items-center justify-center">
-      <h1 class="text-8xl text-text-800 font-display">Documents...</h1>
+  {% include "includes/navbar.html" %}
+  <div class="container mx-auto py-3 mt-8">
+    <div class="flex flex-row justify-between items-end">
+      <span class="text-4xl font-display font-semibold text-text-800">My Documents</span>
+      <div class="flex px-4 py-2 rounded-full transition bg-primary-600 hover:bg-primary-700 cursor-pointer">
+        <span class="text-xl font-header font-medium text-text-100">+ New Document</span>
+      </div>
+    </div>
+    <hr class="my-6 mx-2 border-background-400">
+    {% if documents_count == 0 %}{% endif %}
+    <div class="flex flex-col mt-12 items-center">
+      <span class="text-3xl font-header font-medium text-text-600">You have not uploaded any documents</span>
+      <span class="text-xl font-body font-medium text-text-600 mt-3">Click the button below to upload new documents</span>
+      <div class="flex  mt-6 px-4 py-2 rounded-full transition bg-primary-600 hover:bg-primary-700 cursor-pointer">
+        <span class="text-2xl font-header font-medium text-text-100">+ New Document</span>
+      </div>
     </div>
   </div>
 {% endblock content %}
