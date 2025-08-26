@@ -78,17 +78,20 @@ class RequestRequirement(models.Model):
         verbose_name=_("requested document"),
         on_delete=models.CASCADE,
         related_name="requirements",
+        limit_choices_to={"is_issuable": True},
     )
     document_category = models.ForeignKey(
         DocumentCategory,
         verbose_name=_("document category"),
         null=True,
+        blank=True,
         on_delete=models.CASCADE,
     )
     document_type = models.ForeignKey(
         DocumentType,
         verbose_name=_("document type"),
         null=True,
+        blank=True,
         on_delete=models.CASCADE,
     )
     quantity = models.IntegerField(_("quantity"))
@@ -98,4 +101,6 @@ class RequestRequirement(models.Model):
         verbose_name_plural = _("requirements")
 
     def __str__(self):
-        return f"{self.requested_document.name} Requirements"
+        if self.document_category:
+            return f"{self.requested_document.name} Requirement | {self.quantity} {self.document_category}"
+        return f"{self.requested_document.name} Requirement | {self.document_type}"
