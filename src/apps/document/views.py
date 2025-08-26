@@ -10,7 +10,7 @@ def index(request: HttpResponse):
     if not request.user.is_authenticated:
         return redirect(request, "404")
 
-    documents: QuerySet[DocumentFile] = DocumentFile.objects.all()
+    documents: QuerySet[DocumentFile] = DocumentFile.objects.filter(user=request.user)
 
     context = {
         "documents": documents,
@@ -23,7 +23,6 @@ def create_view(request: HttpRequest):
     form = DocumentFileForm()
     if request.method == "POST":
         form = DocumentFileForm(request.POST, request.FILES)
-        print(request.FILES)
 
     context = {
         "form": form,
