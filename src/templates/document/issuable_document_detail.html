@@ -1,0 +1,26 @@
+{% extends "layouts/default.html" %}
+{% block page_title %}
+  Request {{ issuable_document.name }} | {{ block.super }}
+{% endblock page_title %}
+{% block content %}
+  <div class="container mx-auto py-3 mt-8">
+    <div class="flex flex-row justify-between items-end">
+      <div class="flex flex-row items-baseline gap-x-3">
+        <span class="text-4xl font-display font-semibold text-text-800">Request {{ issuable_document.name }}</span>
+      </div>
+    </div>
+    <hr class="my-6 mx-2 border-background-400">
+    {% if requirements_count == 0 %}
+      <div class="flex flex-col mt-12 items-center">
+        <span class="text-3xl font-header font-medium text-text-600">There are no issuable documents at the moment</span>
+        <span class="text-xl font-body font-medium text-text-600 mt-3">Please contact the admins for your needed document</span>
+      </div>
+    {% endif %}
+    {% if requirements_count >= 1 %}
+      <h2 class="text-2xl font-header">Requirements:</h2>
+      <ul class="ms-3 text-lg list-inside list-disc">
+        {% for requirement in requirements %}<li>{{ requirement.get_requirement_string }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endblock content %}

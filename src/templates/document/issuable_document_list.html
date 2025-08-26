@@ -26,7 +26,10 @@
         <tbody>
           {% for document in issuable_documents %}
             <tr class="transition-colors odd:bg-primary-200 hover:bg-background-300">
-              <td class="py-2 px-3 cursor-pointer">{{ document.name }}</td>
+              <td class="py-2 px-3 cursor-pointer">
+                <a href="{% url "document:issuable_document_detail" document.code %}"
+                   class="flex w-full h-full">{{ document.name }}</a>
+              </td>
             </tr>
           {% endfor %}
         </tbody>
