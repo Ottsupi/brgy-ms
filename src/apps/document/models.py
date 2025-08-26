@@ -109,3 +109,8 @@ class RequestRequirement(models.Model):
         if self.document_category:
             return f"{self.requested_document.name} Requirement | {self.quantity} {self.document_category}"
         return f"{self.requested_document.name} Requirement | {self.document_type}"
+
+    def get_requirement_string(self):
+        if self.document_category:
+            return f"{self.quantity} {self.document_category}"
+        return f"{self.document_type}"
