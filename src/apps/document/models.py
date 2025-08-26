@@ -21,6 +21,7 @@ class DocumentType(models.Model):
     name = models.CharField(_("document type"), max_length=50)
     code = models.CharField(_("document type code"), max_length=50)
     category = models.ForeignKey(DocumentCategory, verbose_name=_("document category"), on_delete=models.CASCADE)
+    is_issuable = models.BooleanField(_("issuable"), default=False)
 
     class Meta:
         verbose_name = _("document type")
@@ -50,7 +51,12 @@ class DocumentFile(models.Model):
 
 
 class Request(models.Model):
-    document_type = models.ForeignKey(DocumentType, verbose_name=_("document type"), on_delete=models.CASCADE)
+    document_type = models.ForeignKey(
+        DocumentType,
+        verbose_name=_("document type"),
+        on_delete=models.CASCADE,
+        limit_choices_to={"is_issuable": True},
+    )
     date_requested = models.DateField(_("date requested"), auto_now_add=True)
     date_issued = models.DateField(_("date issued"), null=True)
 
