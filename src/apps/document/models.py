@@ -19,7 +19,7 @@ class DocumentCategory(models.Model):
 
 class DocumentType(models.Model):
     name = models.CharField(_("document type"), max_length=50)
-    code = models.CharField(_("document type code"), max_length=50)
+    code = models.CharField(_("document type code"), unique=True, max_length=50)
     category = models.ForeignKey(DocumentCategory, verbose_name=_("document category"), on_delete=models.CASCADE)
     is_issuable = models.BooleanField(_("issuable"), default=False)
 
