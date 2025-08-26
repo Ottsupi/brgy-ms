@@ -51,6 +51,7 @@ class DocumentFile(models.Model):
 
 
 class Request(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("user"), on_delete=models.CASCADE)
     document_type = models.ForeignKey(
         DocumentType,
         verbose_name=_("document type"),
