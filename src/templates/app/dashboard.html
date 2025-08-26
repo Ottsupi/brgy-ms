@@ -9,9 +9,11 @@
     </div>
     <hr class="my-6 mx-2 border-background-400">
     <div class="w-full grid grid-cols-3 gap-3">
-      <div class="flex p-6 rounded-2xl shadow transition-all bg-primary-200 hover:bg-primary-300 hover:shadow-md cursor-pointer">
-        <span class="font-header text-xl">Requests</span>
-      </div>
+      <a href="{% url "document:request_list" %}">
+        <div class="flex p-6 rounded-2xl shadow transition-all bg-primary-200 hover:bg-primary-300 hover:shadow-md cursor-pointer">
+          <span class="font-header text-xl">Requests</span>
+        </div>
+      </a>
       <a href="{% url "document:index" %}">
         <div class="flex p-6 rounded-2xl shadow transition-all bg-secondary-200 hover:bg-secondary-300 hover:shadow-md cursor-pointer">
           <span class="font-header text-xl">My Documents</span>

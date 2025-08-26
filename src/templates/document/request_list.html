@@ -1,0 +1,59 @@
+{% extends "layouts/default.html" %}
+{% block page_title %}
+  Requests | {{ block.super }}
+{% endblock page_title %}
+{% block content %}
+  <div class="container mx-auto py-3 mt-8">
+    <div class="flex flex-row justify-between items-end">
+      <div class="flex flex-row items-baseline gap-x-3">
+        <span class="text-4xl font-display font-semibold text-text-800">My Requests</span>
+      </div>
+      <a href="{% url "document:create" %}">
+        <div class="flex px-4 py-2 rounded-full transition bg-primary-600 hover:bg-primary-700 cursor-pointer">
+          <span class="text-xl font-header font-medium text-text-100">+ New Request</span>
+        </div>
+      </a>
+    </div>
+    <hr class="my-6 mx-2 border-background-400">
+    {% if requests_count == 0 %}
+      <div class="flex flex-col mt-12 items-center">
+        <span class="text-3xl font-header font-medium text-text-600">You have not requested any documents</span>
+        <span class="text-xl font-body font-medium text-text-600 mt-3">Click the button below to request new documents</span>
+        <a href="{% url "document:create" %}">
+          <div class="flex  mt-6 px-4 py-2 rounded-full transition bg-primary-600 hover:bg-primary-700 cursor-pointer">
+            <span class="text-2xl font-header font-medium text-text-100">+ New Request</span>
+          </div>
+        </a>
+      </div>
+    {% endif %}
+    {% if requests_count >= 1 %}
+      <div class="w-full flex flex-row justify-start">
+        <span class="text-xl font-header font-semibold text-text-700">
+          {{ requests_count }} item{{ requests_count|pluralize }}
+        </span>
+      </div>
+      <table class="w-3/4 mx-auto table">
+        <thead class="border-b border-background-400">
+          <th></th>
+          <th class="w-1/4 py-3 text-start">Document Type</th>
+          <th class="w-1/4 py-3 text-start">Date Added</th>
+        </thead>
+        <tbody>
+          {% for request in requests %}
+            <tr class="transition-colors odd:bg-primary-200 hover:bg-background-300">
+              <td class="py-2 px-3 cursor-pointer">
+                <td>{{ request.document_type.name }}</td>
+              </td>
+              <td class="py-2">{{ request.date_requested|date:"Y-m-d" }}</td>
+              {% if document.date_issued %}
+                <td class="py-2">{{ document.date_issued|date:"Y-m-d" }}</td>
+              {% else %}
+                <td class="py-2">Not yet issued</td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </div>
+{% endblock content %}
