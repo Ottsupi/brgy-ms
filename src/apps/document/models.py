@@ -47,3 +47,49 @@ class DocumentFile(models.Model):
 
     def __str__(self):
         return self.file_name
+
+
+class Request(models.Model):
+    document_type = models.ForeignKey(DocumentType, verbose_name=_("document type"), on_delete=models.CASCADE)
+    date_requested = models.DateField(_("date requested"), auto_now_add=True)
+    date_issued = models.DateField(_("date issued"), null=True)
+
+    class Meta:
+        verbose_name = _("request")
+        verbose_name_plural = _("requests")
+
+    def __str__(self):
+        return f"{self.document_type.name} Request"
+
+    @property
+    def is_issued(self):
+        return bool(self.date_issued)
+
+
+class RequestRequirement(models.Model):
+    requested_document = models.ForeignKey(
+        DocumentType,
+        verbose_name=_("requested document"),
+        on_delete=models.CASCADE,
+        related_name="requirements",
+    )
+    document_category = models.ForeignKey(
+        DocumentCategory,
+        verbose_name=_("document category"),
+        null=True,
+        on_delete=models.CASCADE,
+    )
+    document_type = models.ForeignKey(
+        DocumentType,
+        verbose_name=_("document type"),
+        null=True,
+        on_delete=models.CASCADE,
+    )
+    quantity = models.IntegerField(_("quantity"))
+
+    class Meta:
+        verbose_name = _("requirement")
+        verbose_name_plural = _("requirements")
+
+    def __str__(self):
+        return f"{self.requested_document.name} Requirements"
