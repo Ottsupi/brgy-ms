@@ -3,7 +3,11 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 
 from .forms import DocumentFileForm
-from .models import DocumentFile, Request
+from .models import (
+    DocumentFile,
+    DocumentType,
+    Request,
+)
 
 
 def index(request: HttpResponse):
@@ -44,3 +48,12 @@ def request_list_view(request: HttpRequest):
         "requests_count": requests.count(),
     }
     return render(request, "document/request_list.html", context)
+
+
+def issuable_document_list_view(request: HttpRequest):
+    issuable_documents = DocumentType.objects.filter(is_issuable=True)
+    context = {
+        "issuable_documents": issuable_documents,
+        "issuable_documents_count": issuable_documents.count(),
+    }
+    return render(request, "document/issuable_document_list.html", context)

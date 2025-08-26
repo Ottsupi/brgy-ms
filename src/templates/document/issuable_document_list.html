@@ -1,0 +1,36 @@
+{% extends "layouts/default.html" %}
+{% block page_title %}
+  Issuable Documents | {{ block.super }}
+{% endblock page_title %}
+{% block content %}
+  <div class="container mx-auto py-3 mt-8">
+    <div class="flex flex-row justify-between items-end">
+      <div class="flex flex-row items-baseline gap-x-3">
+        <span class="text-4xl font-display font-semibold text-text-800">Request Document</span>
+      </div>
+    </div>
+    <hr class="my-6 mx-2 border-background-400">
+    {% if issuable_documents_count == 0 %}
+      <div class="flex flex-col mt-12 items-center">
+        <span class="text-3xl font-header font-medium text-text-600">There are no issuable documents at the moment</span>
+        <span class="text-xl font-body font-medium text-text-600 mt-3">Please contact the admins for your needed document</span>
+      </div>
+    {% endif %}
+    {% if issuable_documents_count >= 1 %}
+      <table class="w-3/4 mx-auto table">
+        <thead class="border-b border-background-400">
+          <tr>
+            <th>Document</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for document in issuable_documents %}
+            <tr class="transition-colors odd:bg-primary-200 hover:bg-background-300">
+              <td class="py-2 px-3 cursor-pointer">{{ document.name }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </div>
+{% endblock content %}
