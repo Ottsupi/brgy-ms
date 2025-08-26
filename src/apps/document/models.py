@@ -49,6 +49,10 @@ class DocumentFile(models.Model):
     def __str__(self):
         return self.file_name
 
+    @property
+    def document_category(self):
+        return self.document_type.category
+
 
 class Request(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("user"), on_delete=models.CASCADE)
