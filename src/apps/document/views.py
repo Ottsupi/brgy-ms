@@ -64,44 +64,45 @@ def issuable_document_detail_view(request: HttpRequest, document_code: str):
     issuable_document = DocumentType.objects.get(code=document_code)
     requirements: QuerySet[RequestRequirement] = issuable_document.requirements.all()
     user_documents = DocumentFile.objects.filter(user=request.user)
-    is_valid = False
+    is_valid: bool = False
+    errors: list[str] = []
 
     # Loop through requirements
     for requirement in requirements:
         # For requirements with document_category,
         #   count the user's documents with a distinct document_type
         #   matching the requirement's document_category
-        # If it meets the required quantity, mark valid and go to the next loop
-        # If not, mark invalid and exit early
+        # If it is less than the required quantity, add error
+        # Continue to next loop
         if requirement.document_category:
             user_document_count_in_category = (
                 user_documents.distinct("document_type")
                 .filter(document_type__category=requirement.document_category)
                 .count()
             )
-            if user_document_count_in_category >= requirement.quantity:
-                is_valid = True
-                continue
-            is_valid = False
-            break
+            if user_document_count_in_category < requirement.quantity:
+                missing_document_count = requirement.quantity - user_document_count_in_category
+                errors.append(f"Missing {missing_document_count} {requirement.document_category.name}")
+            continue
 
         # For requirements with document_type,
         #   check if the user has a document with the required document_type
-        # If yes, mark valid and keep going
-        # If not, mark invalid and exit early
+        # If not, add error
+        # Continue to next loop
         user_documents_with_required_type_exists = user_documents.filter(
             document_type=requirement.document_type,
         ).exists()
-        if user_documents_with_required_type_exists:
-            is_valid = True
-            continue
-        is_valid = False
-        break
+        if not user_documents_with_required_type_exists:
+            errors.append(f"Missing {requirement.document_type.name}")
+        continue
 
+    is_valid = len(errors) == 0
     context = {
         "issuable_document": issuable_document,
         "requirements": requirements,
         "requirements_count": requirements.count(),
         "is_valid": is_valid,
+        "errors": errors,
+        "errors_count": len(errors),
     }
     return render(request, "document/issuable_document_detail.html", context)
